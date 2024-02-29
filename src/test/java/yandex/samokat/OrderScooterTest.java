@@ -43,13 +43,7 @@ public class OrderScooterTest extends BaseTest {
 
     @Test
     public void orderScooterByTopPageOrderButton() {
-        HomePageSamokat homePageSamokat = new HomePageSamokat(driver);
-        if (isTopPageOrderButton) {
-            homePageSamokat.clickTopPageOrderButton();
-        } else {
-            homePageSamokat.scrollMiddlePageOrderButton();
-            homePageSamokat.clickMiddlePageOrderButton();
-        }
+        clickPageOrderButton(isTopPageOrderButton);
 
         UserInfoDeliveryPage userInfoDeliveryPage = new UserInfoDeliveryPage(driver);
         userInfoDeliveryPage.clickAgreeCookiesWindow();
@@ -70,5 +64,15 @@ public class OrderScooterTest extends BaseTest {
     @After
     public void tearDown() {
         driver.quit();
+    }
+
+    public void clickPageOrderButton (boolean isTopPageOrderButton) {
+        HomePageSamokat homePageSamokat = new HomePageSamokat(driver);
+        if (isTopPageOrderButton) {
+            homePageSamokat.clickTopPageOrderButton();
+        } else {
+            homePageSamokat.scrollMiddlePageOrderButton();
+            homePageSamokat.clickMiddlePageOrderButton();
+        }
     }
 }
